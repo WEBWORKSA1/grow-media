@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en" data-root="../">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Email Deliverability Basics: Stay Out of Spam, Land in the Inbox | Grow.Media</title>
+<meta name="description" content="Email deliverability basics explained plainly: set up SPF, DKIM, and DMARC, keep your list clean, reduce spam complaints, and warm up a new sending domain.">
+<link rel="canonical" href="https://grow.media/guides/email-deliverability-basics.html">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="google-adsense-account" content="ca-pub-6620975821265271">
+<meta property="og:site_name" content="Grow.Media">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Email Deliverability Basics: Stay Out of Spam, Land in the Inbox">
+<meta property="og:description" content="Email deliverability basics explained plainly: set up SPF, DKIM, and DMARC, keep your list clean, reduce spam complaints, and warm up a new sending domain.">
+<meta property="og:url" content="https://grow.media/guides/email-deliverability-basics.html">
+<meta property="og:image" content="https://grow.media/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b1f17">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/icon-192.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/style.css">
+<script>try{var t=localStorage.getItem("gm-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6620975821265271" crossorigin="anonymous"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Email Deliverability Basics: Stay Out of Spam, Land in the Inbox", "description": "Email deliverability basics explained plainly: set up SPF, DKIM, and DMARC, keep your list clean, reduce spam complaints, and warm up a new sending domain.", "datePublished": "2026-10-30", "dateModified": "2026-10-30", "author": {"@type": "Organization", "name": "Grow.Media Editorial Team", "url": "https://grow.media/about.html"}, "publisher": {"@type": "Organization", "name": "Grow.Media", "logo": {"@type": "ImageObject", "url": "https://grow.media/assets/img/icon-512.png"}}, "mainEntityOfPage": "https://grow.media/guides/email-deliverability-basics.html", "image": "https://grow.media/assets/img/og.png", "keywords": "email deliverability, spf dkim dmarc, spam complaints, bulk sender requirements, email warm-up, sender reputation, inbox placement"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://grow.media/index.html"}, {"@type": "ListItem", "position": 2, "name": "Guides", "item": "https://grow.media/guides/index.html"}, {"@type": "ListItem", "position": 3, "name": "Email & Newsletters", "item": "https://grow.media/guides/index.html#email"}, {"@type": "ListItem", "position": 4, "name": "Email Deliverability Basics: Stay Out of Spam, Land in the Inbox"}]}</script>
+</head>
+<body data-sticky>
+
+<a class="skip" href="#main">Skip to content</a>
+<div class="topbar">Interested in this website or the Grow.Media domain? <a href="https://web.works/contact" target="_blank" rel="noopener">Contact, if you are interested in this website/domain name/Sponsorship/Advertisement/Partnership →</a></div>
+<header class="site-header">
+<div class="container nav">
+<a class="brand" href="../index.html" aria-label="Grow.Media home"><svg viewBox="0 0 40 40" aria-hidden="true"><rect width="40" height="40" rx="11" fill="#0b1f17"/><path d="M20 31V18" stroke="#c6f432" stroke-width="3" stroke-linecap="round"/><path d="M20 20c0-5 3.5-8.5 9-8.5 0 5.5-3.5 8.5-9 8.5z" fill="#c6f432"/><path d="M20 23.5c0-4-2.8-7-7.5-7 0 4.5 2.8 7 7.5 7z" fill="#34c27f"/></svg><span>Grow<span class="dot">.</span>Media</span></a>
+<ul class="menu" id="menu">
+<li data-dd="guides"><a class="nl" href="../guides/index.html">Guides</a></li>
+<li><a class="nl" href="../tools/index.html">Free Tools</a></li>
+<li><a class="nl" href="../videos.html">Video Academy</a></li>
+<li data-dd="community"><a class="nl" href="../contests.html">Community</a></li>
+<li><a class="nl" href="../advertise.html">Advertise</a></li>
+</ul>
+<div class="nav-actions">
+<button class="icon-btn" data-search aria-label="Search the site (press /)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></button>
+<button class="icon-btn" id="themeToggle" aria-label="Switch to dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></button>
+<a class="btn btn-primary btn-sm" href="../growth-plan.html">Free Growth Plan</a>
+<button class="icon-btn burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+</div>
+</div>
+</header>
+<main id="main">
+<div class="progress" aria-hidden="true"></div>
+<div class="container"><nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html">Home</a> / <a href="../guides/index.html">Guides</a> / <a href="../guides/index.html#email">Email &amp; Newsletters</a> / <span>Email Deliverability Basics: Stay Out of Spam, Land in the Inbox</span></nav>
+<header class="art-head narrow" style="margin-left:0;width:auto">
+<span class="tag">Email &amp; Newsletters</span>
+<h1>Email Deliverability Basics: Stay Out of Spam, Land in the Inbox</h1>
+<p class="lead">Email deliverability basics explained plainly: set up SPF, DKIM, and DMARC, keep your list clean, reduce spam complaints, and warm up a new sending domain.</p>
+<div class="byline"><span class="avatar">G</span><span><b>Grow.Media Editorial Team</b></span><span>·</span><span>Updated <time datetime="2026-10-30">October 30, 2026</time></span><span>·</span><span>7 min read</span></div>
+</header>
+<div class="art-layout">
+<aside class="toc" aria-label="Table of contents"><b>On this page</b><a href="#key-takeaways">Key takeaways</a><a href="#what-affects-deliverability">What affects deliverability</a><a href="#spf-dkim-and-dmarc-explained-plainly">SPF, DKIM, and DMARC explained plainly</a><a href="#what-mailbox-providers-expect-from-bulk-senders">What mailbox providers expect from bulk senders</a><a href="#list-quality-send-only-to-people-who-want-it">List quality: send only to people who want it</a><a href="#engagement-signals-and-how-to-improve-them">Engagement signals and how to improve them</a><a href="#reducing-spam-complaints">Reducing spam complaints</a><a href="#warming-up-a-new-domain">Warming up a new domain</a><a href="#your-next-step">Your next step</a></aside>
+<article class="prose">
+<p>You can write the best email of your life and still have it vanish into a spam folder. Deliverability is the set of technical and behavioral signals that tell mailbox providers your messages are wanted. The good news is that most of it is straightforward once someone explains it plainly. This guide covers authentication, list quality, engagement, current bulk-sender expectations, spam complaints, and how to warm up a new domain.</p>
+<h2 id="key-takeaways">Key takeaways</h2>
+<ul>
+<li>Delivery means a server accepted your email. Deliverability means it reached the inbox. Aim for the second.</li>
+<li>SPF, DKIM, and DMARC prove your emails really come from you. Set up all three on your own domain.</li>
+<li>Mailbox providers watch how recipients behave. Engagement and complaints shape your sender reputation.</li>
+<li>Major providers now publish requirements for bulk senders, including authentication, easy unsubscribes, and low complaint rates.</li>
+<li>New domains need a gradual warm-up. Start with your most engaged subscribers and increase volume slowly.</li>
+</ul>
+<h2 id="what-affects-deliverability">What affects deliverability</h2>
+<p>Mailbox providers weigh several groups of signals when deciding where to place your email:</p>
+<ol>
+<li><strong>Authentication:</strong> Can they verify the email truly came from your domain?</li>
+<li><strong>Sender reputation:</strong> What is the history of your domain and sending IP address?</li>
+<li><strong>Recipient engagement:</strong> Do people open, click, reply, or move your emails out of spam? Or do they delete without reading and report spam?</li>
+<li><strong>List quality:</strong> Are you sending to real, consenting, active addresses?</li>
+<li><strong>Content and formatting:</strong> Does the message look like legitimate email, with working links and a clear sender?</li>
+</ol>
+<p>No single factor guarantees the inbox, but weakness in any one of them can send you to spam.</p>
+<h2 id="spf-dkim-and-dmarc-explained-plainly">SPF, DKIM, and DMARC explained plainly</h2>
+<p>Think of these three records as a verification system for your domain. They live in your domain's DNS settings, and your email platform gives you the exact values to add.</p>
+<h3 id="spf-sender-policy-framework">SPF (Sender Policy Framework)</h3>
+<p>SPF is a published list of the servers allowed to send email for your domain. When a message arrives, the receiving server checks whether it came from a server on that list.</p>
+<ul>
+<li>You can have only <strong>one</strong> SPF record per domain. Combine multiple services into a single record.</li>
+<li>SPF is limited to 10 DNS lookups. Adding too many services can break it.</li>
+</ul>
+<h3 id="dkim-domainkeys-identified-mail">DKIM (DomainKeys Identified Mail)</h3>
+<p>DKIM adds a digital signature to each email. Your platform signs outgoing messages with a private key, and receivers check the signature against a public key published in your DNS. If the message was altered in transit, or wasn't signed by an authorized sender, the check fails.</p>
+<h3 id="dmarc-domain-based-message-authentication-reporting-and-conformance">DMARC (Domain-based Message Authentication, Reporting, and Conformance)</h3>
+<p>DMARC tells receivers what to do when an email fails authentication, and it requests reports so you can see who is sending as your domain. It also requires <strong>alignment</strong>, meaning the domain in the visible "From" address must match the domain verified by SPF or DKIM.</p>
+<table>
+<thead>
+<tr>
+<th>Record</th>
+<th>What it answers</th>
+<th>Typical setup</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SPF</td>
+<td>Is this server allowed to send for this domain?</td>
+<td>One TXT record listing your sending services</td>
+</tr>
+<tr>
+<td>DKIM</td>
+<td>Was this message signed by the domain and left unaltered?</td>
+<td>Record values supplied by your email platform</td>
+</tr>
+<tr>
+<td>DMARC</td>
+<td>What should happen if checks fail, and where should reports go?</td>
+<td>TXT record at _dmarc.yourdomain.com</td>
+</tr>
+</tbody>
+</table>
+<h3 id="a-safe-dmarc-rollout">A safe DMARC rollout</h3>
+<ol>
+<li>Start with a monitoring policy, such as <code>v=DMARC1; p=none; rua=mailto:reports@example.com</code>.</li>
+<li>Review reports for a few weeks to confirm all your legitimate services pass.</li>
+<li>Move to <code>p=quarantine</code>, which sends failing mail to spam.</li>
+<li>Once you're confident, move to <code>p=reject</code>, which blocks failing mail entirely.</li>
+</ol>
+<aside class="lead-box" aria-label="Free growth plan"><div><h4>Grow a list that actually buys</h4><p>Get a free list-building and newsletter plan tailored to your audience.</p></div><a class="btn btn-lime" href="../growth-plan.html?topic=email">Get my free plan →</a></aside>
+
+<h2 id="what-mailbox-providers-expect-from-bulk-senders">What mailbox providers expect from bulk senders</h2>
+<p>Since 2024, Gmail and Yahoo have enforced requirements for bulk senders, generally described as those sending around 5,000 or more messages a day to their users, and Microsoft has announced similar rules for its consumer mail services. Requirements evolve, so check each provider's current sender guidelines, but the core expectations are consistent:</p>
+<ul>
+<li>Authenticate with SPF and DKIM, and publish a DMARC record (at least <code>p=none</code>).</li>
+<li>Align the "From" domain with your authenticated domain.</li>
+<li>Include one-click unsubscribe in marketing emails and honor requests within two days.</li>
+<li>Keep reported spam complaint rates below 0.3%, ideally well under 0.1%.</li>
+<li>Send from a domain you own rather than a free webmail address.</li>
+</ul>
+<p>Even if you send far less, treat these as best practice. They are the clearest public signal of what providers consider trustworthy behavior.</p>
+<h2 id="list-quality-send-only-to-people-who-want-it">List quality: send only to people who want it</h2>
+<p>The fastest way to damage your reputation is sending to people who didn't ask for your email.</p>
+<ul>
+<li><strong>Earn consent clearly.</strong> Explain what subscribers will receive and how often.</li>
+<li><strong>Consider double opt-in.</strong> Confirmation filters out typos, fake addresses, and bots.</li>
+<li><strong>Never buy, rent, or scrape lists.</strong> These often contain spam traps, addresses that exist solely to catch senders with poor practices.</li>
+<li><strong>Remove hard bounces at once.</strong> Repeatedly sending to invalid addresses signals a poorly maintained list.</li>
+<li><strong>Sunset inactive subscribers.</strong> Run a short re-engagement series for people who haven't engaged in roughly three to six months, then remove those who don't respond.</li>
+</ul>
+<p>The <a href="../guides/lead-magnets-list-building.html">lead magnets and list-building guide</a> covers how to grow a list with clear consent from the start.</p>
+<h2 id="engagement-signals-and-how-to-improve-them">Engagement signals and how to improve them</h2>
+<p>Providers watch what recipients do with your messages. Positive signals include opens, clicks, replies, adding you to contacts, and moving your email out of spam. Negative signals include deleting without opening, ignoring messages for months, and reporting spam.</p>
+<p>Open rates are an imperfect measure because some email apps load messages automatically. Lean more on clicks and replies. To improve engagement:</p>
+<ol>
+<li>Send content that matches what you promised at signup.</li>
+<li>Use a consistent, recognizable sender name.</li>
+<li>Invite replies with a genuine question.</li>
+<li>Send your most engaged segment first when testing new content or volume.</li>
+<li>Track link clicks consistently by tagging links with the <a href="../tools/utm-builder.html">UTM builder</a>, so you can see which emails drive real visits.</li>
+</ol>
+<h2 id="reducing-spam-complaints">Reducing spam complaints</h2>
+<p>People usually click "report spam" because they don't recognize you, you email too often, or unsubscribing looks difficult. Fix the cause:</p>
+<table>
+<thead>
+<tr>
+<th>Cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Subscriber doesn't recognize you</td>
+<td>Use a consistent sender name and remind them why they joined</td>
+</tr>
+<tr>
+<td>Too many emails</td>
+<td>Set expectations at signup and offer a lower-frequency option</td>
+</tr>
+<tr>
+<td>Unsubscribe is hard to find</td>
+<td>Place a clear unsubscribe link in every email and enable one-click unsubscribe</td>
+</tr>
+<tr>
+<td>Content doesn't match the promise</td>
+<td>Revisit your signup page and welcome emails</td>
+</tr>
+<tr>
+<td>Old, cold addresses</td>
+<td>Re-engage or remove subscribers who haven't engaged in months</td>
+</tr>
+</tbody>
+</table>
+<p>Google Postmaster Tools lets you monitor reputation and complaint rates for mail sent to Gmail users once your volume is high enough to register.</p>
+<h2 id="warming-up-a-new-domain">Warming up a new domain</h2>
+<p>A brand-new sending domain has no reputation. Sending a large volume immediately looks suspicious. Warm up gradually. The schedule below is an illustrative starting point; adjust it to your platform's guidance and your results.</p>
+<table>
+<thead>
+<tr>
+<th>Week</th>
+<th>Who to send to</th>
+<th>Approximate daily volume</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Most engaged subscribers only</td>
+<td>A few dozen to a few hundred</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Engaged subscribers from the last 30 to 60 days</td>
+<td>Roughly double week one</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Add subscribers active in the last 90 days</td>
+<td>Increase again if metrics stay healthy</td>
+</tr>
+<tr>
+<td>4 and beyond</td>
+<td>Full active list</td>
+<td>Scale gradually toward normal volume</td>
+</tr>
+</tbody>
+</table>
+<p>Most small senders use a shared IP address managed by their email platform, which already has an established reputation. Dedicated IP addresses generally only make sense at high, consistent volume. Some businesses also send marketing email from a subdomain, such as news.example.com, to keep it separate from their everyday business email.</p>
+<h2 id="your-next-step">Your next step</h2>
+<p>Open your email platform's domain settings today and confirm that SPF, DKIM, and DMARC are set up and passing. If DMARC is missing, add a monitoring policy now. Then check that every campaign includes a visible unsubscribe link, and schedule a re-engagement series for subscribers who haven't clicked in the past six months.</p>
+<aside class="card" style="margin:2em 0;display:flex;gap:18px;align-items:center;flex-wrap:wrap"><div class="ico" style="margin:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M22 7l-10 6L2 7"/></svg></div>
+<div style="flex:1;min-width:220px"><b>Free tool: Email List Growth Calculator</b><p>Project subscribers over time from traffic, opt-in rate and churn, and see your list&#x27;s ceiling.</p>
+</div>
+<a class="btn btn-primary btn-sm" href="../tools/email-list-growth-calculator.html">Open tool →</a></aside>
+<h2 id="watch">Watch: How Search Works</h2>
+<p>Prefer video? This free resource from Google complements this guide.</p>
+<div class="vcard"><div class="yt" data-id="BNHR6IQJGZs" data-title="How Search Works"></div>
+<h3>How Search Works</h3>
+<p>Google · A short, official explainer of what happens between typing a query and seeing results.</p>
+</div>
+<p class="micro" style="margin-top:8px">Video embedded from YouTube; it belongs to its creator. Grow.Media is not affiliated with the channel.</p>
+<h2 id="faq">Frequently asked questions</h2>
+<div class="faq"><details><summary>What is the difference between delivery and deliverability?</summary><div><p>Delivery means the receiving mail server accepted your message. Deliverability means it reached the inbox rather than the spam folder or a filtered tab. An email can be delivered and still go unseen, which is why inbox placement is the goal.</p>
+</div>
+</details>
+<details><summary>Do I need SPF, DKIM, and DMARC if my list is small?</summary><div><p>Yes. The strictest requirements from major mailbox providers apply to high-volume senders, but authentication helps every sender prove legitimacy. Setting all three up early is quick, and it prevents problems as your list grows.</p>
+</div>
+</details>
+<details><summary>What spam complaint rate is too high?</summary><div><p>Major mailbox providers have said bulk senders should stay below a 0.3% complaint rate, and many deliverability practitioners recommend aiming under 0.1%. If you approach those levels, review how subscribers joined, how often you send, and how easy it is to unsubscribe.</p>
+</div>
+</details>
+<details><summary>Why are my emails suddenly going to spam?</summary><div><p>Common causes include a broken or missing authentication record, a spike in complaints or bounces, a sudden jump in sending volume, or sending to long-inactive addresses. Check your authentication first, then review recent changes to your list and sending pattern.</p>
+</div>
+</details>
+</div>
+<div class="share" aria-label="Share"><a class="btn btn-ghost btn-sm" data-share="x" href="#">Share on X</a><a class="btn btn-ghost btn-sm" data-share="linkedin" href="#">LinkedIn</a><a class="btn btn-ghost btn-sm" data-share="facebook" href="#">Facebook</a><a class="btn btn-ghost btn-sm" data-share="whatsapp" href="#">WhatsApp</a><button class="btn btn-ghost btn-sm" data-copy="url" type="button">Copy link</button></div>
+<div class="band" style="padding:34px"><div class="blob"></div>
+<h3 style="font-size:1.5rem">Get the Weekly Growth Brief</h3>
+<p>3 tactics, 2 tools, 1 experiment. Every Tuesday, five minutes, free.</p>
+<form class="gm-form hero-form" data-subject="Newsletter signup (guide email-deliverability-basics)" data-ok="You're in! Watch your inbox for the next Weekly Growth Brief.">
+<label class="sr-only" for="nl-81779">Email address</label>
+<input id="nl-81779" type="email" name="Email" placeholder="you@example.com" required autocomplete="email">
+<input type="hidden" name="Form" value="Newsletter — guide email-deliverability-basics">
+<input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+<button class="btn btn-primary" type="submit">Subscribe</button>
+</form></div>
+<p class="micro" style="margin-top:22px">Editorial note: this guide is educational and reflects general best practice at the time of writing. Benchmarks are broad ranges; results vary. See our <a href="../editorial-policy.html">editorial policy</a> and <a href="../disclaimer.html">disclaimer</a>.</p>
+</article>
+</div>
+<section class="section-sm"><div class="sec-head"><h2>Keep growing</h2>
+<a href="../guides/index.html">All guides →</a></div>
+<div class="grid g3"><a class="card reveal" data-cat="email" href="../guides/start-a-newsletter.html"><span class="tag">Email &amp; Newsletters</span><h3>How to Start a Newsletter and Reach Your First 1,000 Subscribers</h3>
+<p>Learn how to start a newsletter: sharpen your positioning, choose a platform, design a repeatable issue format, set a cadence, and win your first subscribers.</p>
+<div class="meta"><span>7 min read</span><span>Updated October 30, 2026</span></div>
+</a><a class="card reveal" data-cat="email" href="../guides/lead-magnets-list-building.html"><span class="tag">Email &amp; Newsletters</span><h3>Lead Magnets That Convert: A Practical List-Building Playbook</h3>
+<p>Build your email list with lead magnets that convert: choose the right format, place opt-in forms well, design a landing page, and write a welcome sequence.</p>
+<div class="meta"><span>7 min read</span><span>Updated October 30, 2026</span></div>
+</a><a class="card reveal" data-cat="ads" href="../guides/cpm-cpc-cpa-roas-explained.html"><span class="tag">Paid Ads</span><h3>CPM, CPC, CPA and ROAS Explained With Worked Examples</h3>
+<p>CPM, CPC, CPA and ROAS explained with plain formulas and worked examples, plus break-even ROAS and MER, so you can judge any paid campaign with confidence.</p>
+<div class="meta"><span>8 min read</span><span>Updated October 30, 2026</span></div>
+</a></div>
+</section>
+</div>
+</main>
+<footer class="site-footer" id="gm-foot"><div class="container"><p><a href="../about.html">About</a> · <a href="../contact.html">Contact</a> · <a href="../advertise.html">Advertise</a> · <a href="../privacy.html">Privacy Policy</a> · <a href="../terms.html">Terms</a> · <a href="../cookies.html">Cookies</a> · <a href="../disclaimer.html">Disclaimer</a> · <a href="../trademark.html">Trademark &amp; Copyright</a> · <a href="../sitemap.html">Sitemap</a></p>
+<p class="f-tm">Grow.Media is an independent publication, not affiliated with any company named "Grow", "Grow Media" or "GrowMedia". © 2026 Grow.Media.</p>
+</div>
+</footer>
+<script src="../assets/js/layout.js"></script>
+<script src="../assets/js/config.js"></script>
+<script src="../assets/js/search-index.js"></script>
+<script src="../assets/js/main.js"></script>
+
+</body>
+</html>
