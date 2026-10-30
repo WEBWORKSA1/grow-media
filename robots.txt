@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /content/
+Disallow: /scripts/
+
+User-agent: Mediapartners-Google
+Allow: /
+
+Sitemap: https://grow.media/sitemap.xml
